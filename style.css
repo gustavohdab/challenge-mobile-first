@@ -15,22 +15,65 @@
 
     --fc-header: hsl(0, 0%, 100%);
     --fc-h2: hsla(var(--hue), 17%, 35%, 1);
+    --fc-page-info: hsla(var(--hue), 95%, 95%, 1);
 
 
     --ff-header:'Staatliches', cursive;
     --ff-main:'Palanquin', sans-serif;
+    --ff-p-before:'Roboto', sans-serif;
+    --ff-footer: 'Open Sans', sans-serif;
 
     --fs-main: 2rem;
+    --stagger-delay: 45ms;
 }
 
 .page{
-    max-width: 40rem;
-    text-align: center;
+    max-width: 100vw;
+    height: 100vh;
     margin: 0 auto;
 }
 
+.page-info {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--bc-body);
+}
+
+.page-info p {
+    /* width: 26rem; */
+    color: black;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    font-family: var(--ff-p-before);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    letter-spacing: 0.07rem;
+    line-height: 2.2rem;
+    max-width: 37rem;
+    margin: 5em auto;
+    margin: 2rem auto 5rem;
+    padding: 0 2rem;
+    animation: topdown 800ms 200ms backwards;
+}
+.page-info p:before {
+    content: "The best and tastiest ice creams"
+}
+
+.gallery {
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3.2rem;
+    padding: 0 3.2rem 3.2rem;
+    margin: auto;
+}
 header{
     animation: topdown;
+    background-color: var(--bc-header);
+    padding-bottom: .1rem;
+    text-align: center;
 }
 header img{
     margin-top: 3rem;
@@ -49,57 +92,46 @@ header h1{
     margin-top: 2.1rem;
 }
 
-body::before {
-    content: '';
-    width: 100%;
-    height: 28rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background-color: var(--bc-header);
-}
 body{
     background-color: var(--bc-body);
 }
-main p{
+
+section p{
     font-family: var(--ff-main);
     font-size: var(--fs-main);
     letter-spacing: .07rem;
     text-transform: uppercase;
     text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    margin-bottom: 3rem;
+    margin-bottom: 2.1rem;
+    margin-top: 6rem;
 }
 
 .card{
     display: grid;
-    justify-content: center; 
-    text-transform: uppercase;
-    padding: 3.2rem;
+    /* justify-content: center;  */
+    /* text-transform: uppercase; */
+    /* padding: 3.2rem; */
     font-family: var(--ff-header);
     font-size: var(--fs-main);
     position: relative;
 }
 
-.card:nth-child(5){
-    margin-bottom: 4rem;
-}
-
 .card h2{
     position: absolute;
-    top: 4.7rem;
-    right: 5.9rem;
-    letter-spacing: .3rem;
     background-color: var(--bc-h2);
-    font-size: var(--fs-main);
     color: var(--fc-h2);
+    font-size: var(--fs-main);
+    letter-spacing: .3rem;
     line-height: 3.4rem;
     border-radius: 2rem;
-    display: inline-flex;
-    align-items: center;
-    padding: 0 1.6rem;
-    height: 3.8rem;
-    /* padding: .1rem 2.3rem; */
+    top: 1.7rem;
+    right: 1.9rem;
+    padding: .1rem 2.3rem;
+    /* padding: 0 1.6rem; */
+    /* display: inline-flex; */
+    /* align-items: center; */
+    /* height: 3.8rem; */
+    /* width: fit-content; */
 }
 
 .card img{
@@ -113,6 +145,18 @@ main p{
     transform: scale(1.1);
     opacity: 0.8;
     filter: none;
+}
+
+.desktop-only{
+    display: none;
+}
+
+footer{
+    display: none;
+}
+
+footer p{
+    margin: 5rem;
 }
 
 /* animations */
@@ -131,6 +175,7 @@ main{
 .card h2{
     animation: topdown 800ms 1000ms backwards;
 }
+
 
 @keyframes topdown {
     0%{
@@ -153,5 +198,172 @@ main{
     100%{
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (min-width: 768px){
+    
+    .page{
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    /* .header{
+        min-width: 33rem;
+    } */
+    header {
+        min-width: 33rem;
+        margin-bottom: 0rem;
+    }
+
+    header img {
+        max-width: 20rem;
+        height: auto;
+        margin-bottom: 3rem;
+    }
+
+    header h1 {
+        padding: 20px;
+        margin-bottom: 3rem;
+        font-size: 4.8rem;
+    }
+    
+    .page-info{
+        background-color: var(--bc-header);
+    }
+    
+    .page-info p {
+        width: 26rem;
+        color: black;
+        font-family: var(--ff-p-before);
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+        margin: 15em auto;
+        text-transform: uppercase;
+        letter-spacing: 0.07rem;
+        text-overflow: ellipsis;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        animation: topdown 800ms 200ms backwards
+    }
+    .page-info p:before {
+        content: "since 2000 @gustavo"
+    }
+
+    main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .gallery {
+        width: 100%;
+        padding: 5rem;
+        margin: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .page{
+        justify-content: center;
+    }
+    main{
+        max-width: 90rem;
+    }
+    section p{
+        display: none;
+    }
+    .card{
+        padding: 1.5rem;
+    }
+    .gallery {
+        max-width: max-content;
+        padding: 5rem;
+        display: grid;
+        grid-template-areas:"A C"
+                            "B C"
+                            "B D";
+    }
+    .card h2 {
+        display: none;
+    }
+    .gallery .card:nth-child(1) {
+        grid-area: A;
+    }
+    
+    .gallery .card:nth-child(2) {
+        grid-area: C;
+    }
+    
+    .gallery .card:nth-child(3) {
+        grid-area: D;
+    }
+    
+    .gallery .card:nth-child(4) {
+        grid-area: B;
+    }
+    .card:nth-child(5){
+        margin-bottom: 0rem;
+    }
+    footer{
+        display: contents;
+        text-align: center;
+        font-family:var(--ff-footer);
+        padding-bottom: 40px;
+    }
+    footer a{
+        font-weight: bold;
+        text-decoration: none;
+        font-size: inherit;
+        color: var(--fc-h2);
+    }
+    footer p{
+        font-size: 1.4rem;
+        line-height: 2.8rem;
+    }
+}
+
+@media (min-width: 1230px) {
+    main {
+        max-width: 100vw;
+    }
+    
+    .card {
+        display: block;
+    }
+
+    .card p {
+        display: none;
+    }
+
+    .gallery {
+        max-width: 100vw;
+        padding: 5rem;
+        display: grid;
+        justify-content: center;
+        grid-template-areas:"A C E"
+                            "B C F"
+                            "B D F";
+    }
+
+    .gallery .card:nth-child(1) {
+        grid-area: A;
+    }
+    .gallery .card:nth-child(2) {
+        grid-area: C;
+    }
+    .gallery .card:nth-child(3) {
+        grid-area: D;
+    }
+    .gallery .card:nth-child(4) {
+        grid-area: B;
+    }
+    .gallery .card:nth-child(5) {
+        grid-area: E;
+        animation-delay: calc(5 * var(--stagger-delay));
+    }
+    .gallery .card:nth-child(6) {
+        grid-area: F;
+        animation-delay: calc(6 * var(--stagger-delay));
     }
 }
